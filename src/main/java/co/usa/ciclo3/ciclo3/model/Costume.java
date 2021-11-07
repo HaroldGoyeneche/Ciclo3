@@ -20,11 +20,11 @@ public class Costume implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String brand;
     private Integer year;
     private String description;
-    private String name;
-
+     
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("costumes")
@@ -44,6 +44,14 @@ public class Costume implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBrand() {
@@ -70,14 +78,6 @@ public class Costume implements Serializable {
         this.description = description;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -102,5 +102,5 @@ public class Costume implements Serializable {
         this.reservations = reservations;
     }
 
-   
+    
 }
