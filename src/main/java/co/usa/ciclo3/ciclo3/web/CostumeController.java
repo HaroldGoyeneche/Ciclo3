@@ -2,7 +2,6 @@ package co.usa.ciclo3.ciclo3.web;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,14 +39,14 @@ public class CostumeController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Costume save(@RequestBody Costume c) {
-        return costumeService.save(c);
+    public Costume save(@RequestBody Costume costume) {
+        return costumeService.save(costume);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Costume update(@RequestBody Costume c) {
-        return costumeService.Update(c);
+    public Costume update(@RequestBody Costume costume) {
+        return costumeService.update(costume);
     }   
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

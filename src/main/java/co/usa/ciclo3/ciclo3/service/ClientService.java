@@ -21,40 +21,40 @@ public class ClientService {
         return clientRepository.getClient(idClient);
     }
     
-    public Client save(Client c){
-         if (c.getIdClient()==null){
+    public Client save(Client client){
+         if (client.getIdClient()==null){
 
          
-        return clientRepository.save(c);
+        return clientRepository.save(client);
         }else{
-            Optional<Client> caux=clientRepository.getClient(c.getIdClient());
+            Optional<Client> caux=clientRepository.getClient(client.getIdClient());
             if(caux.isEmpty()){
-                return clientRepository.save(c); 
+                return clientRepository.save(client); 
             }else{
-                return c;
+                return client;
             }
         }
     }
-    public Client Update(Client c){
-        if (c.getIdClient()!=null){
-            Optional<Client> e=clientRepository.getClient(c.getIdClient());
-            if(!e.isEmpty()){
-                if (c.getName()!=null){
-                    e.get().setName(c.getName());
+    public Client update(Client client){
+        if (client.getIdClient()!=null){
+            Optional<Client> caux=clientRepository.getClient(client.getIdClient());
+            if(!caux.isEmpty()){
+                if (client.getName()!=null){
+                    caux.get().setName(client.getName());
                 }
-                if (c.getPassword()!=null) {
-                    e.get().setPassword(c.getPassword());
+                if (client.getPassword()!=null) {
+                    caux.get().setPassword(client.getPassword());
                 }
-                if (c.getAge()!=null) {
-                    e.get().setAge(c.getAge());
+                if (client.getAge()!=null) {
+                    caux.get().setAge(client.getAge());
                 }
-                clientRepository.save(e.get());
-                return e.get();
+                clientRepository.save(caux.get());
+                return caux.get();
             }else{
-                return c;
+                return client;
             }
         }else{
-            return c;
+            return client;
         }
 
     }

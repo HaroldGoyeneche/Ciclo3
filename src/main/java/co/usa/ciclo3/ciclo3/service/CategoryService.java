@@ -21,47 +21,47 @@ public class CategoryService {
         return categoryRepository.getCategory(id);
     }
     
-    public Category save(Category c){
-         if (c.getId()==null){
+    public Category save(Category category){
+         if (category.getId()==null){
 
          
-        return categoryRepository.save(c);
+        return categoryRepository.save(category);
         }else{
-            Optional<Category> caux=categoryRepository.getCategory(c.getId());
+            Optional<Category> caux=categoryRepository.getCategory(category.getId());
             if(caux.isEmpty()){
-                return categoryRepository.save(c); 
+                return categoryRepository.save(category); 
             }else{
-                return c;
+                return category;
             }
         }
     }
-    public Category Update(Category c){
-        if (c.getId()!=null){
-            Optional<Category> g=categoryRepository.getCategory(c.getId());
-            if(!g.isEmpty()){
-                if (c.getName()!=null){
-                    g.get().setName(c.getName());
+    public Category update(Category category){
+        if (category.getId()!=null){
+            Optional<Category> caux=categoryRepository.getCategory(category.getId());
+            if(!caux.isEmpty()){
+                if (category.getName()!=null){
+                    caux.get().setName(category.getName());
                 }
-                if (c.getDescription()!=null) {
-                    g.get().setDescription(c.getDescription());
+                if (category.getDescription()!=null) {
+                    caux.get().setDescription(category.getDescription());
                 }
-                categoryRepository.save(g.get());
-                return g.get();
+                categoryRepository.save(caux.get());
+                return caux.get();
             }else{
-                return c;
+                return category;
             }
         }else{
-            return c;
+            return category;
         }
 
     }
 
     public boolean deleteCategory(int categoryId){
-        Boolean d =  getCategory(categoryId).map(category ->{
+        Boolean catboolean =  getCategory(categoryId).map(category ->{
             categoryRepository.delete(category);
             return  true;   
         }).orElse(false);
-        return d;
+        return catboolean;
     }
     
 }

@@ -21,43 +21,43 @@ public class CostumeService {
         return costumeRepository.getCostume(id);
     }
 
-    public Costume save(Costume c) {
-        if (c.getId() == null) {
+    public Costume save(Costume costume) {
+        if (costume.getId() == null) {
 
-            return costumeRepository.save(c);
+            return costumeRepository.save(costume);
         } else {
-            Optional<Costume> caux = costumeRepository.getCostume(c.getId());
+            Optional<Costume> caux = costumeRepository.getCostume(costume.getId());
             if (caux.isEmpty()) {
-                return costumeRepository.save(c);
+                return costumeRepository.save(costume);
             } else {
-                return c;
+                return costume;
             }
         }
     }
 
-    public Costume Update(Costume c){
-        if (c.getId()!=null){
-            Optional<Costume> e=costumeRepository.getCostume(c.getId());
-            if(!e.isEmpty()){
-                if (c.getName()!=null){
-                    e.get().setName(c.getName());
+    public Costume update(Costume costume){
+        if (costume.getId()!=null){
+            Optional<Costume> cosaux=costumeRepository.getCostume(costume.getId());
+            if(!cosaux.isEmpty()){
+                if (costume.getName()!=null){
+                    cosaux.get().setName(costume.getName());
                 }
-                if (c.getBrand()!=null) {
-                    e.get().setBrand(c.getBrand());
+                if (costume.getBrand()!=null) {
+                    cosaux.get().setBrand(costume.getBrand());
                 }
-                if (c.getYear()!=null) {
-                    e.get().setYear(c.getYear());
+                if (costume.getYear()!=null) {
+                    cosaux.get().setYear(costume.getYear());
                 }
-                if (c.getCategory()!=null) {
-                    e.get().setCategory(c.getCategory());
+                if (costume.getCategory()!=null) {
+                    cosaux.get().setCategory(costume.getCategory());
                 }
-                costumeRepository.save(e.get());
-                return e.get();
+                costumeRepository.save(cosaux.get());
+                return cosaux.get();
             }else{
-                return c;
+                return costume;
             }
         }else{
-            return c;
+            return costume;
         }
 
     }

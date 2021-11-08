@@ -19,11 +19,11 @@ public class ClientRepository {
     public Optional<Client> getClient(int id){
         return clientCrudRepository.findById(id);
     }
-    public Client save(Client c){
-        return clientCrudRepository.save(c); 
+    public Client save(Client client){
+        return clientCrudRepository.save(client); 
     }
-    public void delete(Client c){
-        clientCrudRepository.delete(c);
+    public void delete(Client client){
+        clientCrudRepository.delete(client);
     }
 
 

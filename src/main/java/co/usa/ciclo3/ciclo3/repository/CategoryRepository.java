@@ -19,11 +19,11 @@ public class CategoryRepository {
     public Optional<Category> getCategory(int idClient){
         return categoryCrudRepository.findById(idClient);
     }
-    public Category save(Category c){
-        return categoryCrudRepository.save(c); 
+    public Category save(Category category){
+        return categoryCrudRepository.save(category); 
     }
-    public void delete(Category c){
-        categoryCrudRepository.delete(c);
+    public void delete(Category category){
+        categoryCrudRepository.delete(category);
     }
 
 

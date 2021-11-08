@@ -37,13 +37,13 @@ public class CategoryController {
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category save(@RequestBody Category c) {
-        return categoryService.save(c);
+    public Category save(@RequestBody Category category) {
+        return categoryService.save(category);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category update(@RequestBody Category c) {
-        return categoryService.Update(c);
+    public Category update(@RequestBody Category category) {
+        return categoryService.update(category);
     }   
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

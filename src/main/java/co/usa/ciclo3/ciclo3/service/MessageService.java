@@ -21,34 +21,34 @@ public class MessageService {
         return messageRepository.getMessage(idMessage);
     }
     
-    public Message save(Message m){
-         if (m.getIdMessage()==null){
+    public Message save(Message message){
+         if (message.getIdMessage()==null){
 
          
-        return messageRepository.save(m);
+        return messageRepository.save(message);
         }else{
-            Optional<Message> caux=messageRepository.getMessage(m.getIdMessage());
+            Optional<Message> caux=messageRepository.getMessage(message.getIdMessage());
             if(caux.isEmpty()){
-                return messageRepository.save(m); 
+                return messageRepository.save(message); 
             }else{
-                return m;
+                return message;
             }
         }
     }
-    public Message Update(Message m){
-        if (m.getIdMessage()!=null){
-            Optional<Message> e=messageRepository.getMessage(m.getIdMessage());
-            if(!e.isEmpty()){
-                if (m.getMessageText()!=null){
-                    e.get().setMessageText(m.getMessageText());
+    public Message update(Message message){
+        if (message.getIdMessage()!=null){
+            Optional<Message> maux=messageRepository.getMessage(message.getIdMessage());
+            if(!maux.isEmpty()){
+                if (message.getMessageText()!=null){
+                    maux.get().setMessageText(message.getMessageText());
                 }
-                messageRepository.save(e.get());
-                return e.get();
+                messageRepository.save(maux.get());
+                return maux.get();
             }else{
-                return m;
+                return message;
             }
         }else{
-            return m;
+            return message;
         }
 
     }
