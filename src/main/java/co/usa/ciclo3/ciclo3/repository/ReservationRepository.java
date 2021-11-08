@@ -42,11 +42,11 @@ public class ReservationRepository {
         for(int i=0;i<report.size();i++ ){
             /*           
             Client  cli=(Client) report.get(i)[0];
-            Integer cantidad=(Integer)report.get(i)[1];
+            Long cantidad=(Long)report.get(i)[1];
             CountClient cc=new CountClient(cantidad , cli);
             res.add(cc);
             */
-            res.add(new CountClient((Integer) report.get(i)[1] , (Client)report.get(i)[0] ));
+            res.add(new CountClient((Long) report.get(i)[1] , (Client)report.get(i)[0] ));
         }
  
         return res;
