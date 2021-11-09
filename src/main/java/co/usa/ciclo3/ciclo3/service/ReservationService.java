@@ -17,7 +17,7 @@ public class ReservationService {
 
     @Autowired
     private ReservationRepository reservationRepository;
-
+    //Metodo Get
     public List<Reservation> getAll() {
         return reservationRepository.getAll();
     }
@@ -25,7 +25,7 @@ public class ReservationService {
     public Optional<Reservation> getReservation(int idReservarion) {
         return reservationRepository.getReservation(idReservarion);
     }
-
+    //Metodo Post
     public Reservation save(Reservation reservation) {
         if (reservation.getIdReservation() == null) {
 
@@ -39,7 +39,7 @@ public class ReservationService {
             }
         }
     }
-
+    //Metodo Put
     public Reservation update(Reservation reservation) {
         if (reservation.getIdReservation() != null) {
             Optional<Reservation> raux = reservationRepository.getReservation(reservation.getIdReservation());
@@ -63,7 +63,7 @@ public class ReservationService {
         }
 
     }
-
+    //Metodo Delete
     public boolean deleteReservation(int reservationId) {
         Boolean aBoolean = getReservation(reservationId).map(reservation -> {
             reservationRepository.delete(reservation);
@@ -71,19 +71,19 @@ public class ReservationService {
         }).orElse(false);
         return aBoolean;
     }
-
+    //Metodo Para llamar mejores clientes
     public List<CountClient> getTopClients() {
         return reservationRepository.getTopClients();
     }
-
+    //Metodo para reservas completas vs canceladas
     public StatusAmount getStatusReport() {
-        List<Reservation> completed = reservationRepository.getReservationsByStatus("Completed");
-        List<Reservation> cancelled = reservationRepository.getReservationsByStatus("Cancelled");
+        List<Reservation> completed = reservationRepository.getReservationsByStatus("completed");
+        List<Reservation> cancelled = reservationRepository.getReservationsByStatus("cancelled");
 
         StatusAmount descAmt = new StatusAmount(completed.size(), cancelled.size());
         return descAmt;
     }
-
+    //Metodo para cantidad de reservas en determinado tiempo
     public List<Reservation> getReservationsPeriod(String  d1,String d2){
 
         SimpleDateFormat parser=new SimpleDateFormat("yyyy-MM-dd");

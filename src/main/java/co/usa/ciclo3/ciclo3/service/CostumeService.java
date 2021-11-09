@@ -48,8 +48,8 @@ public class CostumeService {
                 if (costume.getYear()!=null) {
                     cosaux.get().setYear(costume.getYear());
                 }
-                if (costume.getCategory()!=null) {
-                    cosaux.get().setCategory(costume.getCategory());
+                if (costume.getDescription()!=null) {
+                    cosaux.get().setDescription(costume.getDescription());
                 }
                 costumeRepository.save(cosaux.get());
                 return cosaux.get();
